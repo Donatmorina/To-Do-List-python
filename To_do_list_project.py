@@ -1,22 +1,17 @@
-
 from tkinter import *
 from tkinter import messagebox
 
-#Create the window
 window = Tk()
 window.title("To-Do List Application")
 window.geometry("600x600")
 window.config(bg="lightgray")
 
-#Title name
 title_name = Label(window, text="To-Do List Application", font=("Helvetica", 18, "bold"), bg="lightgray")
 title_name.pack(pady=10)
 
-#Frame to hold the task list and buttons
 frame_task = Frame(window, bg="lightgray")
 frame_task.pack(pady=10)
 
-#Create a holder in frame_task for the items in a listbox with a Scrollbar
 scrollbar_task = Scrollbar(frame_task, orient=VERTICAL)
 listbox_task = Listbox(frame_task, bg="white", fg="black", height=15, width=45, font=("Helvetica", 12), yscrollcommand=scrollbar_task.set, selectbackground="lightblue")
 scrollbar_task.config(command=listbox_task.yview)
@@ -24,11 +19,9 @@ scrollbar_task.config(command=listbox_task.yview)
 scrollbar_task.pack(side=RIGHT, fill=Y)
 listbox_task.pack(side=LEFT, fill=BOTH)
 
-#Entry widget to add new tasks
 task_input = Entry(window, width=50, font=("Helvetica", 12))
 task_input.pack(pady=10)
 
-#Functions for the buttons: add task, delete task, mark task as completed, and clear all tasks
 def entertask():
     task = task_input.get().strip() 
     if task:
@@ -69,7 +62,6 @@ def clearalltasks():
         listbox_task.delete(0, END)
         messagebox.showinfo("Tasks Cleared", "All tasks have been cleared successfully.")
 
-#Create widget buttons: add task, delete task, mark task as completed, and clear all tasks
 button_frame = Frame(window, bg="lightgray")
 button_frame.pack(pady=20)
 
